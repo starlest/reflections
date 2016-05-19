@@ -1,9 +1,8 @@
-﻿What happens when you initialize a repository?
+What happens when you initialize a repository?
 
 A new git repository is created. A hidden folder named .git is added which contains the required files for version history.
 
 Why do you need to do it?
-
 
 Without a repository, git cannot do anything. Git only tracks files in the repository.
 
@@ -17,30 +16,45 @@ What value do you think it offers?
 The option to create your set of files which you want to commit without having to add all new files. 
 This way you have the option to make a split based on logical functionality
 
-How can you use the staging area to make sure you have one commit per logical 
-change?
+How can you use the staging area to make sure you have one commit per logical change?
 
-The staging area gives you the possibility to decide which files should be part of the commit and which not.
-This way you can split changed files in logical change sets.
+The staging area allows the flexibility to select which files are to be commited. This allows only files that are affected by a logical change to be commited at a time.
 
-What are some situations when branches would be helpful in keeping your history
-organized? 
+What are some situations when branches would be helpful in keeping your history organized? 
 
-    Work on conflicting changes, trying out new features, large code refactoring etc.
-    This gives the possibility to change everything with multiple commits into the "feature branch" and then do a large merge to the "main branch".
-    This will keep the history clean, but you can still use version control during development.
+Work on conflicting changes, trying out new features, large code refactoring etc.
 
 How would branches help?
 
-
-Split concerns. Safe to make big changes and test new things out.
+It allows concerns to be split. A programmer has more confidence to make big changes or test new things in a new branch with the safety of a fallback to master branch if anything goes south.
 
 How do the diagrams help you visualize the branch structure?
 
+It allows us to see which commits are attached to a branch and the commits that are ignored by a branch.
 
+What is the result of merging two branches together?
 
-What is the result of merging two branches together? Why do we represent it in
-the diagram the way we do?
+The result is one branch with changes from both branches.
 
-What are the pros and cons of Git’s automatic merging vs. always doing merges
-manually?
+Why do we represent it in the diagram the way we do?
+
+After a merge, all commits will be shown based on the timestamp in git log. This will show the commits from the two different branches running through each other.
+
+What are the pros and cons of Git’s automatic merging vs. always doing merges manually?
+
+Automatic merging saves a lot of time compared to doing merges manually. 
+
+Commands:
+
+git add  |    Add a file to the staging area
+git commit  |    Commit the files from the staging area to the repository 
+git status  |    Show which files are in the staging area, and which files from the working directory are not part of the repository    
+git diff  |    Git diff without arguments is comparing the working directory with the staging area
+git diff --staged  |    Compare the staging area with the repository
+git reset --hard  |    Undo all changes! There is no rollback for this, so be carefull!
+git checkout master  |    Restore the "Head" to the latest check-in (this will be part of a later lesson/module)
+git log --graph --oneline <branch1> <branch2>  |    Show a visual representation of the commit history within different branches
+git checkout -b new_branch_name  |    Creates a new branch and do a checkout on this branch in one call instead of git branch new_branch_name and git checkout new_branch_name
+git merge branch1 branch2  |    Merge two branches, branch2 get merged into branch1
+git branch -d name  |    Remove the branch with the specified name
+git show commitId  |    Show the changes made in this commit compared to the previous version. This is working even after merging.
