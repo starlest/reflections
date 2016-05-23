@@ -1,1 +1,39 @@
 When would you want to create a remote repository rather than keeping all your work local?
+
+There is always a possibility that one's local harddrive might go south.
+
+Why might you want to always pull changes manually rather than having Git automatically stay up-to-date with your remote repository?
+
+There might be changes made by others that you do not want in your local repository at the moment. One such example is conflicts that you would prefer to resolve at a latter time.
+
+Describe the differences between forks, clones, and branches. When would you use one instead of another?
+
+Fork - copy of a repository on GitHub. Use this when you want to make changes to a repository which you do not have access to the original repository.
+Clone - copy of a repository. Be it from a local machine or a GitHub repisotory. Use this for collaboration.
+Branches - leaves of the master branch. Changes made in these brance will not have effect on the master branch till merged. Use this for experimenting new features/bug fixes. 
+
+What is the benefit of having a copy of the last known state of the remote stored locally?
+
+It gives the ability to work offline.
+
+How would you collaborate without using Git or GitHub? What would be easier, and what would be harder?
+
+I would collaborate using dropbox/email etc. It would be easier as they are plug and play optiions. It would be harder to track the history of changes made to files in a repository.
+
+When would you want to make changes in a separate branch rather than directly in master? What benefits does each approach have?
+
+I would make changes in a separate branch to ensure that the current project is still in working state (in master branch) if the changes are detrimental. 
+
+By using a different branch, changes I have made can be reviewed by the owner of the repository before deciding whether to merge it into the master branch. 
+
+For small changes, it is way faster to just make  them in the master branch.
+
+Commands:
+
+git remote  |    Show all remote locations for the repository
+git remote add origin url |     Add a new remote location for the repository. Origin is the default name to use when you create only one remote location. Url should be the https url to the github repository.
+git remove -v  |    Outputs the remote locations with verbose information (fetch and push urls)
+git push origin master  |    Push the master branch to the remote location origin.
+git pull origin master  |    Get the master branch from the remote location origin.
+git pull origin master  |    = Git fetch origin + git merge master origin/master
+git fetch origin  |    Get the changes from the remote location into the (hidden?) origin/master branch
